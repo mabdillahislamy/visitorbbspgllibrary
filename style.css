@@ -1,0 +1,101 @@
+/* General styling for the entire page */
+body {
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(to bottom, #FF7F50, #000080); /* Gradasi dari oranye ke navy */
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+/* Styling for the container */
+.container {
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+    max-width: 500px;
+    width: 100%;
+}
+
+/* Styling for the main heading */
+h1 {
+    text-align: center;
+    color: #333;
+    font-size: 2em;
+    margin-bottom: 20px;
+}
+
+/* Styling for different visitor sections */
+.visitor-section {
+    margin-bottom: 30px;
+}
+
+.internal {
+    background-color: #e3f2fd;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.external {
+    background-color: #fff3e0;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+/* Styling for subheadings */
+h2 {
+    color: #007BFF;
+    font-size: 1.5em;
+    margin-bottom: 15px;
+}
+
+/* Form styling */
+.form-group {
+    margin-bottom: 15px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #333;
+}
+
+/* Input fields styling */
+input[type="text"],
+input[type="email"],
+input[type="tel"] {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1em;
+}
+
+/* Submit button styling */
+.submit-btn {
+    width: 100%;
+    padding: 10px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 1em;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.submit-btn:hover {
+    background-color: #218838;
+}
+
+/* Divider styling */
+.divider {
+    border-top: 2px solid #007BFF;
+    margin: 30px 0;
+}
