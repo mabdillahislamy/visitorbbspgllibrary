@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Library Visitor</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f0f0f0;
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .main-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        .container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: #2c3e50;
+        }
+
+        .visitor-section {
+            margin-bottom: 20px;
+        }
+
+        .visitor-section h2 {
+            font-size: 1.5rem;
+            color: #2980b9;
+            margin-bottom: 10px;
+        }
+
+        .visitor-section p {
+            font-size: 1rem;
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+            text-align: left;
+        }
+
+        .form-group label {
+            font-size: 1rem;
+            margin-bottom: 5px;
+            display: block;
+            color: #34495e;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 10px;
+            font-size: 1rem;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+            box-sizing: border-box;
+        }
+
+        .submit-btn {
+            background-color: #3498db;
+            color: #fff;
+            padding: 10px 20px;
+            font-size: 1rem;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .submit-btn:hover {
+            background-color: #2980b9;
+        }
+
+        .divider {
+            height: 2px;
+            background-color: #ddd;
+            margin: 20px 0;
+        }
+
+        .qr-code-container {
+            position: absolute;
+            top: 20px;
+            right: -220px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .qr-code-box {
+            background-color: #fff;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .qr-code img {
+            width: 120px;
+            height: 120px;
+            border: 1px solid #ccc;
+            padding: 5px;
+            border-radius: 10px;
+        }
+
+        .qr-code h3 {
+            margin-top: 10px;
+            font-size: 1.2rem;
+            color: #333;
+        }
+
+        /* Media Query untuk Layar Lebih Kecil */
+        @media (max-width: 768px) {
+            .qr-code-container {
+                display: none;
+                /* Sembunyikan QR code pada layar kecil */
+            }
+
+            .container {
+                padding: 10px;
+                /* Kurangi padding untuk layar yang lebih kecil */
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="main-container">
+        <div class="container">
+            <h1>Buku Pengunjung Perpustakaan BBSPGL</h1>
+
+            <!-- Internal Visitors Section -->
+            <section class="visitor-section internal">
+                <h2>Internal Visitor</h2>
+                <p>Jika anda pegawai BBSPGL, silahkan klik ini <a
+                        href="https://perpustakaan.mgi.esdm.go.id/index.php?p=visitor" target="_blank">Visitor
+                        Internal</a>.
+                </p>
+            </section>
+
+            <div class="divider"></div>
+
+            <!-- External Visitors Section -->
+            <section class="visitor-section external">
+                <h2>Pengunjung Luar / External Visitor</h2>
+                <form id="visitorForm"
+                    action="https://docs.google.com/forms/d/e/1FAIpQLSdwSk3VZfwOrp04mQfN_xNpuufMJ9qAxnAzvvXQE9jI-XCyCw/formResponse"
+                    method="POST" target="_self" autocomplete="off">
+                    <div class="form-group">
+                        <label for="name">Nama:</label>
+                        <input type="text" id="nama" name="entry.2114831656" required autocomplete="off">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="institution">Institusi:</label>
+                        <input type="text" id="institusi" name="entry.781499034" required autocomplete="off">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">E-mail:</label>
+                        <input type="email" id="email" name="entry.1643927723" required autocomplete="off">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="phone">Nomor HP:</label>
+                        <input type="tel" id="phone" name="entry.2115906265" required autocomplete="off">
+                    </div>
+
+                    <button type="submit" class="submit-btn">Submit</button>
+                </form>
+            </section>
+        </div>
+
+        <!-- QR Code Section -->
+        <div class="qr-code-container">
+            <div class="qr-code-box">
+                <h3>Scan untuk isi di HP</h3>
+                <img src="qr.png" alt="QR Code">
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript untuk menangani pengalihan halaman -->
+    <script>
+        document.getElementById('visitorForm').onsubmit = function () {
+            setTimeout(function () {
+                window.location.href = 'https://c3e8acbf-2817-4d84-ba56-0d0f594284c1-00-o61rs43leh7z.sisko.replit.dev/';
+            }, 2000); // 2000 milliseconds = 2 detik
+        };
+    </script>
+</body>
+
+</html>
